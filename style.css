@@ -450,8 +450,141 @@ footer img {
   margin-right: auto; /* Pushes nav to the right */
 }
 
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--text-color);
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100%;
+  background: var(--white);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  padding: 80px 20px 20px;
+  overflow-y: auto;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu li {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.mobile-menu li:last-child {
+  border-bottom: none;
+  margin-bottom: 30px;
+}
+
+.mobile-menu li a {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu li a:hover,
+.mobile-menu li a.active {
+  color: var(--primary-green);
+}
+
+.mobile-menu .btn-iskan {
+  display: inline-block;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Dropdown in mobile menu */
+.mobile-menu .dropdown-content {
+  display: block !important;
+  position: static;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 10px 0 0 20px;
+  margin-top: 10px;
+}
+
+.mobile-menu .dropdown-content li {
+  border-bottom: none;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.mobile-menu .dropdown-content li a {
+  font-size: 1rem;
+  color: var(--light-text);
+}
+
+.mobile-menu .dropdown-content li a:hover {
+  color: var(--primary-blue);
+}
+
 /* Remove spacing hack, header is back */
-.subpage-wrapper {
+.subpage-wrapper { 
   display: none;
 }
 
@@ -462,21 +595,24 @@ footer img {
     padding: 15px 0;
   }
 
-  header {
-    height: auto;
-    position: relative; /* Changed from fixed for better mobile handling or keep fixed but consider height */
+  /* Show mobile menu toggle */
+  .mobile-menu-toggle {
+    display: flex;
   }
 
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 15px 0;
-    gap: 15px; /* Reduced gap for mobile */
+  /* Hide desktop menu */
+  #nav-menu {
+    display: none;
+  }
+
+  header {
+    height: auto;
+    position: relative;
   }
 
   .hero {
-    padding-top: 40px; /* Reduced padding since header might not be fixed overlay or just to reduce gap */
-    min-height: auto; /* Allow content to dictate height */
+    padding-top: 40px;
+    min-height: auto;
     padding-bottom: 60px;
   }
 
@@ -487,7 +623,7 @@ footer img {
   }
 
   .hero-text h1 {
-    font-size: 2.5rem; /* Smaller font on mobile */
+    font-size: 2.5rem;
   }
 
   .hero-text p {
@@ -497,8 +633,32 @@ footer img {
 
   /* About Page Image Responsive */
   .section-padding > .container > div {
-    /* Targeting the grid in about us page */
     grid-template-columns: 1fr !important;
+  }
+
+  /* Additional responsive rules for specific layouts */
+  .section-padding .container > div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section-padding .container > div[style*="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section-padding .container > div[style*="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact form responsive adjustments */
+  .card input,
+  .card textarea,
+  .card select {
+    width: 100% !important;
+    margin-bottom: 15px;
+  }
+
+  .card form div[style*="text-align: center"] {
+    text-align: left !important;
   }
 
   .hero-image {
@@ -508,7 +668,7 @@ footer img {
   .hero-image img {
     width: 100%;
     max-width: 100%;
-    transform: none; /* Remove 3D effect on mobile for cleaner look */
+    transform: none;
   }
 
   .footer-grid {
@@ -517,7 +677,20 @@ footer img {
   }
 
   .card {
-    padding: 30px; /* Slightly reduced padding */
+    padding: 30px;
+  }
+
+  /* Page headers responsive */
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+
+  .breadcrumbs {
+    font-size: 0.85rem;
   }
 }
 
@@ -533,5 +706,42 @@ footer img {
 
   .btn-login {
     margin-left: 0;
+  }
+
+  /* Mobile menu adjustments for small screens */
+  .mobile-menu {
+    width: 100%;
+    right: -100%;
+  }
+
+  /* Page headers on very small screens */
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .page-header p {
+    font-size: 0.9rem;
+  }
+
+  /* Breadcrumbs on small screens */
+  .breadcrumbs {
+    font-size: 0.8rem;
+    padding: 6px 15px;
+  }
+
+  /* Card padding on small screens */
+  .card {
+    padding: 20px;
+  }
+
+  /* Section padding reduction */
+  .section-padding {
+    padding: 60px 0;
+  }
+
+  /* Footer adjustments */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 }
