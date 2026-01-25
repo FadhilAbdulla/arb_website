@@ -591,7 +591,9 @@ footer img {
 /* Responsive */
 @media (max-width: 968px) {
   .nav-wrapper {
-    flex-direction: column;
+    flex-direction: row !important; /* Keep horizontal layout */
+    justify-content: space-between !important; /* Logo left, menu right */
+    align-items: center !important;
     padding: 15px 0;
   }
 
