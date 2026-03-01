@@ -173,14 +173,14 @@
 
     <script>
         // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
             if (menuToggle && mobileMenu && mobileMenuOverlay) {
                 // Toggle menu when hamburger is clicked
-                menuToggle.addEventListener('click', function() {
+                menuToggle.addEventListener('click', function () {
                     menuToggle.classList.toggle('active');
                     mobileMenu.classList.toggle('active');
                     mobileMenuOverlay.classList.toggle('active');
@@ -188,7 +188,7 @@
                 });
 
                 // Close menu when overlay is clicked
-                mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuOverlay.addEventListener('click', function () {
                     menuToggle.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     mobileMenuOverlay.classList.remove('active');
@@ -198,7 +198,7 @@
                 // Close menu when a link is clicked
                 const menuLinks = mobileMenu.querySelectorAll('a');
                 menuLinks.forEach(link => {
-                    link.addEventListener('click', function() {
+                    link.addEventListener('click', function () {
                         menuToggle.classList.remove('active');
                         mobileMenu.classList.remove('active');
                         mobileMenuOverlay.classList.remove('active');

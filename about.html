@@ -37,6 +37,7 @@
                     <li><a href="communities.html">Communities</a></li>
                     <li><a href="resident-experience.html">Resident Experience</a></li>
                     <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                     <li style="margin-left: 20px;"><a href="#" class="btn btn-iskan">Iskan <i
                                 class="fas fa-sign-in-alt"></i></a></li>
                 </ul>
@@ -98,8 +99,7 @@
                     </div>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="About ARB" class="about-image">
+                    <img src="assets/img/2.jpg" alt="About ARB" class="about-image">
                 </div>
             </div>
         </div>
@@ -183,14 +183,14 @@
 
     <script>
         // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
             if (menuToggle && mobileMenu && mobileMenuOverlay) {
                 // Toggle menu when hamburger is clicked
-                menuToggle.addEventListener('click', function() {
+                menuToggle.addEventListener('click', function () {
                     menuToggle.classList.toggle('active');
                     mobileMenu.classList.toggle('active');
                     mobileMenuOverlay.classList.toggle('active');
@@ -198,7 +198,7 @@
                 });
 
                 // Close menu when overlay is clicked
-                mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuOverlay.addEventListener('click', function () {
                     menuToggle.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     mobileMenuOverlay.classList.remove('active');
@@ -208,7 +208,7 @@
                 // Close menu when a link is clicked
                 const menuLinks = mobileMenu.querySelectorAll('a');
                 menuLinks.forEach(link => {
-                    link.addEventListener('click', function() {
+                    link.addEventListener('click', function () {
                         menuToggle.classList.remove('active');
                         mobileMenu.classList.remove('active');
                         mobileMenuOverlay.classList.remove('active');
